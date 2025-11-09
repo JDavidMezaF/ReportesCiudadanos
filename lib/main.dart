@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'nuevoreporte.dart';
 import 'misreportes.dart';
 import 'micuenta.dart';
+import 'auth_entry.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,14 +21,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const AuthEntryPage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({super.key, required this.title, this.username, this.role});
   final String title;
+  final String? username;
+  final String? role;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -82,6 +85,14 @@ class _MyHomePageState extends State<MyHomePage> {
               );
             }),
             const Spacer(),
+            if (widget.username != null)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: Text(
+                  'Conectado como: ${widget.username} ${widget.role != null ? '(${widget.role})' : ''}',
+                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                ),
+              ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 250),
               child: ElevatedButton(
@@ -90,7 +101,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   minimumSize: Size(double.infinity, salirButtonHeight),
                 ),
                 onPressed: () {
-                  // Acción de salida
+                  // Volver al login (simulador de cerrar sesión)
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const AuthEntryPage()),
+                  );
                 },
                 child: const Text(
                   'Salir',

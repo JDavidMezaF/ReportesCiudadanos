@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class NuevoReportePage extends StatelessWidget {
+class NuevoReportePage extends StatefulWidget {
   const NuevoReportePage({super.key});
 
+  @override
+  State<NuevoReportePage> createState() => _NuevoReportePageState();
+}
+
+class _NuevoReportePageState extends State<NuevoReportePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,9 +60,13 @@ class NuevoReportePage extends StatelessWidget {
                     const SnackBar(content: Text('Reporte enviado')),
                   );
 
-                  // Esperar un momento y regresar
+                  // Guardar referencia segura al Navigator antes de la espera
+                  final navigator = Navigator.of(context);
+
+                  // Esperar un momento y regresar (verificar mounted)
                   Future.delayed(const Duration(seconds: 1), () {
-                    Navigator.pop(context);
+                    if (!mounted) return;
+                    navigator.pop();
                   });
                 },
                 child: const Text(
