@@ -21,6 +21,15 @@ class _MiCuentaPageState extends State<MiCuentaPage> {
   }
 
   @override
+  void dispose() {
+    nombreController.dispose();
+    correoController.dispose();
+    telefonoController.dispose();
+    contrasenaController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
