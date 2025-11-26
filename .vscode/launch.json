@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    
+    
+    
+    
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "console": "externalTerminal",
+      "cwd": "c:/Users/david/Downloads/flutter_application_1/flutter_application_1/windows/flutter",
+      "program": "c:/Users/david/Downloads/flutter_application_1/flutter_application_1/windows/flutter/build/Debug/outDebug"
+    }
+  ]
+}
