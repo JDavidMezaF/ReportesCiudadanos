@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 // 🔑 IMPORTACIÓN CORREGIDA: Importamos la pantalla de cuenta DEL ADMIN
 import 'micuenta.dart'; // Asumiendo que están en la misma carpeta (admin/)
